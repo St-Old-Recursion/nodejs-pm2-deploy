@@ -138,8 +138,9 @@ class Api {
       .then(getResponse)
   }
   }
-  // Замените на адрес вашего бэкенда
-  const api = new Api('http://localhost:3000');
+
+  const BASE_URL = process.env.REACT_APP_API_URL || 'https://api.makaev.nomorepartiessbs.ru';
+  const api = new Api(BASE_URL);
   
   export default api;
   
