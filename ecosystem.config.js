@@ -42,7 +42,7 @@ module.exports = {
       repo: DEPLOY_REPO,
       path: DEPLOY_PATH,
       ssh_options: `StrictHostKeyChecking=no`,
-      'pre-deploy-local': `bash scripts/deployEnv.sh ${DEPLOY_SSH_CONF} ${DEPLOY_PATH}`,
+      'pre-deploy-local': `bash backend/scripts/deployEnv.sh ${DEPLOY_SSH_CONF} ${DEPLOY_PATH}`,
       'post-deploy': `
         cd ${DEPLOY_PATH}/backend && npm i && npm run build &&
         cd ${DEPLOY_PATH}/frontend && (export NODE_OPTIONS=--openssl-legacy-provider && npm install && npm run build) &&
