@@ -6,7 +6,7 @@ const {
   DEPLOY_PATH,
   DEPLOY_REPO,
   DEPLOY_REF = 'origin/master',
-  DEPLOY_SSH_KEY,
+  DEPLOY_SSH_CONF,
   PORT = 3000,
   DB_ADDRESS = 'mongodb://localhost:27017/mestodb',
 } = process.env;
@@ -41,13 +41,13 @@ module.exports = {
       ref: DEPLOY_REF,
       repo: DEPLOY_REPO,
       path: DEPLOY_PATH,
-      ssh_options: `StrictHostKeyChecking=no -i ${DEPLOY_SSH_KEY || '~/.ssh/vm_access/private_key'}`,
-      'pre-deploy-local': `scp -i ${DEPLOY_SSH_KEY || '~/.ssh/vm_access/private_key'} backend/.env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/shared/.env`,
+      ssh_options: `StrictHostKeyChecking=no`,
+      'pre-deploy-local': `bash scripts/deployEnv.sh ${DEPLOY_SSH_CONF} ${DEPLOY_PATH}`,
       'post-deploy': `
-        cd source/backend && npm install && npm run build &&
-        cd ../frontend && (export NODE_OPTIONS=--openssl-legacy-provider && npm install && npm run build) &&
-        cd ../ && pm2 reload ecosystem.config.js --env production
-      `.replace(/\n/g, ' '),
+        cd ${DEPLOY_PATH}/backend && npm i && npm run build &&
+        cd ${DEPLOY_PATH}/frontend && (export NODE_OPTIONS=--openssl-legacy-provider && npm install && npm run build) &&
+        cd ${DEPLOY_PATH} && pm2 reload ecosystem.config.js --env production
+      `,
     },
   },
 };
