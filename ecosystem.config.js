@@ -43,7 +43,7 @@ module.exports = {
       repo: DEPLOY_REPO,
       path: DEPLOY_PATH,
       ssh_options: `StrictHostKeyChecking=no -i ${DEPLOY_SSH_KEY || '~/.ssh/practikum'}`,
-      'pre-deploy-local': `scp -i ${DEPLOY_SSH_KEY || '~/.ssh/practikum'} backend/.env "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/backend""`,
+      'pre-deploy-local': `scp -i ${DEPLOY_SSH_KEY || '~/.ssh/practikum'} backend/.env "${DEPLOY_SSH_CONF}:${DEPLOY_PATH}/backend""`,
       'post-deploy': `
         cd ${DEPLOY_PATH}/backend && npm i && npm run build &&
         cd ${DEPLOY_PATH}/frontend && (export NODE_OPTIONS=--openssl-legacy-provider && npm install && npm run build) &&
