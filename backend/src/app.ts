@@ -15,7 +15,7 @@ const app = express();
 mongoose.connect(DB_ADDRESS);
 
 const allowedOrigins = [
-  'https://makaev.nomorepartiessbs.ru', 
+  'https://makaev.nomorepartiessite.ru/', 
 ];
 
 // Только для локальных тестов. Не используйте это в продакшене
