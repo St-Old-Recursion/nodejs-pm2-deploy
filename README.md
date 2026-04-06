@@ -2,7 +2,7 @@
 
 IP адрес 158.160.212.157
 
-Frontend https://makaev.nomorepartiessbs.ru
+Frontend https://makaev.nomorepartiessite.ru
 
-Backend https://api.makaev.nomorepartiessbs.ru
+Backend https://api.makaev.nomorepartiessite.ru
 
