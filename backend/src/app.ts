@@ -19,12 +19,7 @@ const allowedOrigins = [
 ];
 
 // Только для локальных тестов. Не используйте это в продакшене
-app.use(cors({
-  origin: allowedOrigins,
-  credentials: true,
-  methods: ['GET','HEAD','PUT','PATCH','POST','DELETE'],
-  allowedHeaders: ['Content-Type','Authorization']
-}));
+app.use(cors());
 app.use(helmet({
     contentSecurityPolicy: {
       useDefaults: false,

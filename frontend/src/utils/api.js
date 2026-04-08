@@ -139,8 +139,7 @@ class Api {
   }
   }
 
-  const BASE_URL = process.env.REACT_APP_API_URL || 'https://api.makaev.nomorepartiessite.ru';
-  const api = new Api(BASE_URL);
+  const api = new Api("https://api.makaev.nomorepartiessite.ru");
   
   export default api;
   

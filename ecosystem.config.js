@@ -23,15 +23,6 @@ module.exports = {
         PORT,
         DB_ADDRESS,
       },
-    },
-    {
-      name: "frontend",
-      script: "serve",
-      args: "-s build -l 3000",
-      cwd: "./frontend",
-      env: {
-        NODE_ENV: "production"
-      }
     }
   ],
 
